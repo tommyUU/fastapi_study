@@ -1,0 +1,30 @@
+```python
+# 导入fastapi
+from fastapi import FastAPI
+import uvicorn
+
+app = FastAPI()  # 初始化对象app
+
+
+# 添加首页,--`装饰器`，当在浏览器中输入`/`，python解释器会调用函数`index`,并且在前端渲染输出"This is Home Page."
+# 定义三个接口，并返回相应的数据类型
+@app.get('/')
+def index():
+    return "This is Home Page."
+
+
+@app.get('/users')
+def users():
+    return {"msg": "Get all users",
+            "code": 2001}
+
+
+@app.get('/projects')
+def projects():
+    return ['项目1', '项目2', '项目3']
+
+
+if __name__ == '__main__':
+    uvicorn.run(app)
+
+```
